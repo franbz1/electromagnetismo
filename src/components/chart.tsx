@@ -29,15 +29,15 @@ export function SolarSystemChart({ result, monthlyConsumption }: ChartProps) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Resultados de la Simulación</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-lg sm:text-xl">Resultados de la Simulación</CardTitle>
+          <CardDescription className="text-xs sm:text-sm">
             Los resultados aparecerán aquí una vez que ingreses el consumo mensual
           </CardDescription>
         </CardHeader>
-        <CardContent className="flex items-center justify-center min-h-[400px]">
-          <div className="text-center text-muted-foreground">
-            <Zap className="w-12 h-12 mx-auto mb-4 opacity-50" />
-            <p>Esperando datos de simulación...</p>
+        <CardContent className="flex items-center justify-center min-h-[300px] sm:min-h-[400px]">
+          <div className="text-center text-muted-foreground px-4">
+            <Zap className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 opacity-50" />
+            <p className="text-sm sm:text-base">Esperando datos de simulación...</p>
           </div>
         </CardContent>
       </Card>
@@ -181,70 +181,70 @@ export function SolarSystemChart({ result, monthlyConsumption }: ChartProps) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Tarjetas de resumen */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <Card>
-          <CardHeader className="pb-3">
-            <CardDescription>Potencia del Sistema</CardDescription>
+          <CardHeader className="pb-2 sm:pb-3">
+            <CardDescription className="text-xs sm:text-sm">Potencia del Sistema</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-2">
-              <Zap className="w-4 h-4 text-chart-1" />
-              <div className="text-2xl font-bold">{result.systemPower.toFixed(2)} kW</div>
+              <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-chart-1 shrink-0" />
+              <div className="text-xl sm:text-2xl font-bold leading-tight">{result.systemPower.toFixed(2)} kW</div>
             </div>
-            <p className="text-xs text-muted-foreground mt-2">
+            <p className="text-xs text-muted-foreground mt-1 sm:mt-2">
               {result.numberOfPanels} paneles de 0.55 kW
             </p>
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader className="pb-3">
-            <CardDescription>Inversión Total</CardDescription>
+          <CardHeader className="pb-2 sm:pb-3">
+            <CardDescription className="text-xs sm:text-sm">Inversión Total</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-2">
-              <DollarSign className="w-4 h-4 text-chart-2" />
-              <div className="text-2xl font-bold">
+              <DollarSign className="w-4 h-4 sm:w-5 sm:h-5 text-chart-2 shrink-0" />
+              <div className="text-lg sm:text-2xl font-bold leading-tight wrap-break-word">
                 {formatCurrency(result.totalCost)}
               </div>
             </div>
-            <p className="text-xs text-muted-foreground mt-2">
+            <p className="text-xs text-muted-foreground mt-1 sm:mt-2">
               Costo de instalación completo
             </p>
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader className="pb-3">
-            <CardDescription>Ahorro Anual</CardDescription>
+          <CardHeader className="pb-2 sm:pb-3">
+            <CardDescription className="text-xs sm:text-sm">Ahorro Anual</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-2">
-              <DollarSign className="w-4 h-4 text-chart-3" />
-              <div className="text-2xl font-bold">
+              <DollarSign className="w-4 h-4 sm:w-5 sm:h-5 text-chart-3 shrink-0" />
+              <div className="text-lg sm:text-2xl font-bold leading-tight wrap-break-word">
                 {formatCurrency(result.annualSavings)}
               </div>
             </div>
-            <p className="text-xs text-muted-foreground mt-2">
+            <p className="text-xs text-muted-foreground mt-1 sm:mt-2 wrap-break-word">
               {formatCurrency(result.monthlySavings)} mensuales
             </p>
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader className="pb-3">
-            <CardDescription>Retorno de Inversión</CardDescription>
+          <CardHeader className="pb-2 sm:pb-3">
+            <CardDescription className="text-xs sm:text-sm">Retorno de Inversión</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-chart-4" />
-              <div className="text-2xl font-bold">
+              <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-chart-4 shrink-0" />
+              <div className="text-xl sm:text-2xl font-bold leading-tight">
                 {result.returnOnInvestment.toFixed(1)} años
               </div>
             </div>
-            <p className="text-xs text-muted-foreground mt-2">
+            <p className="text-xs text-muted-foreground mt-1 sm:mt-2">
               Área requerida: {result.requiredArea} m²
             </p>
           </CardContent>
@@ -254,22 +254,31 @@ export function SolarSystemChart({ result, monthlyConsumption }: ChartProps) {
       {/* Gráfico de métricas del sistema */}
       <Card>
         <CardHeader>
-          <CardTitle>Métricas del Sistema Solar</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-lg sm:text-xl">Métricas del Sistema Solar</CardTitle>
+          <CardDescription className="text-xs sm:text-sm">
             Resumen de las características técnicas del sistema
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <ChartContainer config={metricsConfig} className="min-h-[300px] w-full">
+        <CardContent className="px-2 sm:px-6">
+          <ChartContainer config={metricsConfig} className="min-h-[250px] sm:min-h-[300px] w-full">
             <BarChart accessibilityLayer data={metricsData}>
               <CartesianGrid vertical={false} strokeDasharray="3 3" />
               <XAxis
                 dataKey="name"
                 tickLine={false}
-                tickMargin={10}
+                tickMargin={8}
                 axisLine={false}
+                tick={{ fontSize: 12 }}
+                interval={0}
+                angle={-45}
+                textAnchor="end"
+                height={60}
               />
-              <YAxis tickLine={false} axisLine={false} />
+              <YAxis 
+                tickLine={false} 
+                axisLine={false}
+                tick={{ fontSize: 11 }}
+              />
               <ChartTooltip
                 content={
                   <ChartTooltipContent
@@ -284,7 +293,7 @@ export function SolarSystemChart({ result, monthlyConsumption }: ChartProps) {
                   />
                 }
               />
-              <Bar dataKey="value" radius={[8, 8, 0, 0]}>
+              <Bar dataKey="value" radius={[6, 6, 0, 0]}>
                 {metricsData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.fill} />
                 ))}
@@ -295,26 +304,31 @@ export function SolarSystemChart({ result, monthlyConsumption }: ChartProps) {
       </Card>
 
       {/* Gráfico de análisis financiero */}
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Análisis Financiero</CardTitle>
-            <CardDescription>Inversión vs Ahorro Anual</CardDescription>
+            <CardTitle className="text-lg sm:text-xl">Análisis Financiero</CardTitle>
+            <CardDescription className="text-xs sm:text-sm">Inversión vs Ahorro Anual</CardDescription>
           </CardHeader>
-          <CardContent>
-            <ChartContainer config={financialConfig} className="min-h-[300px] w-full">
+          <CardContent className="px-2 sm:px-6">
+            <ChartContainer config={financialConfig} className="min-h-[250px] sm:min-h-[300px] w-full">
               <BarChart accessibilityLayer data={financialData}>
                 <CartesianGrid vertical={false} strokeDasharray="3 3" />
                 <XAxis
                   dataKey="category"
                   tickLine={false}
-                  tickMargin={10}
+                  tickMargin={8}
                   axisLine={false}
-                  fontSize={12}
+                  tick={{ fontSize: 11 }}
+                  interval={0}
+                  angle={-20}
+                  textAnchor="end"
+                  height={60}
                 />
                 <YAxis
                   tickLine={false}
                   axisLine={false}
+                  tick={{ fontSize: 10 }}
                   tickFormatter={(value) =>
                     `$${(value / 1000000).toFixed(1)}M`
                   }
@@ -326,7 +340,7 @@ export function SolarSystemChart({ result, monthlyConsumption }: ChartProps) {
                     />
                   }
                 />
-                <Bar dataKey="value" radius={[8, 8, 0, 0]}>
+                <Bar dataKey="value" radius={[6, 6, 0, 0]}>
                   {financialData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.fill} />
                   ))}
@@ -338,20 +352,26 @@ export function SolarSystemChart({ result, monthlyConsumption }: ChartProps) {
 
         <Card>
           <CardHeader>
-            <CardTitle>Consumo Energético</CardTitle>
-            <CardDescription>Diario vs Mensual (kWh)</CardDescription>
+            <CardTitle className="text-lg sm:text-xl">Consumo Energético</CardTitle>
+            <CardDescription className="text-xs sm:text-sm">Diario vs Mensual (kWh)</CardDescription>
           </CardHeader>
-          <CardContent>
-            <ChartContainer config={consumptionConfig} className="min-h-[300px] w-full">
+          <CardContent className="px-2 sm:px-6">
+            <ChartContainer config={consumptionConfig} className="min-h-[250px] sm:min-h-[300px] w-full">
               <BarChart accessibilityLayer data={consumptionData}>
                 <CartesianGrid vertical={false} strokeDasharray="3 3" />
                 <XAxis
                   dataKey="name"
                   tickLine={false}
-                  tickMargin={10}
+                  tickMargin={8}
                   axisLine={false}
+                  tick={{ fontSize: 11 }}
+                  interval={0}
                 />
-                <YAxis tickLine={false} axisLine={false} />
+                <YAxis 
+                  tickLine={false} 
+                  axisLine={false}
+                  tick={{ fontSize: 11 }}
+                />
                 <ChartTooltip
                   content={
                     <ChartTooltipContent
@@ -359,7 +379,7 @@ export function SolarSystemChart({ result, monthlyConsumption }: ChartProps) {
                     />
                   }
                 />
-                <Bar dataKey="value" radius={[8, 8, 0, 0]}>
+                <Bar dataKey="value" radius={[6, 6, 0, 0]}>
                   {consumptionData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.fill} />
                   ))}
@@ -373,24 +393,30 @@ export function SolarSystemChart({ result, monthlyConsumption }: ChartProps) {
       {/* Gráfico de proyección de ahorro */}
       <Card>
         <CardHeader>
-          <CardTitle>Proyección de Recuperación de Inversión</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-lg sm:text-xl">Proyección de Recuperación de Inversión</CardTitle>
+          <CardDescription className="text-xs sm:text-sm">
             Ahorro acumulado vs inversión inicial a lo largo de los años
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <ChartContainer config={projectionConfig} className="min-h-[350px] w-full">
+        <CardContent className="px-2 sm:px-6">
+          <ChartContainer config={projectionConfig} className="min-h-[300px] sm:min-h-[350px] w-full">
             <LineChart accessibilityLayer data={projectionData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis
                 dataKey="year"
                 tickLine={false}
-                tickMargin={10}
+                tickMargin={8}
                 axisLine={false}
+                tick={{ fontSize: 11 }}
+                interval="preserveStartEnd"
+                angle={-45}
+                textAnchor="end"
+                height={60}
               />
               <YAxis
                 tickLine={false}
                 axisLine={false}
+                tick={{ fontSize: 10 }}
                 tickFormatter={(value) => `$${(value / 1000000).toFixed(1)}M`}
               />
               <ChartTooltip
@@ -400,13 +426,17 @@ export function SolarSystemChart({ result, monthlyConsumption }: ChartProps) {
                   />
                 }
               />
-              <ChartLegend content={<ChartLegendContent />} />
+              <ChartLegend 
+                content={<ChartLegendContent />}
+                wrapperStyle={{ fontSize: '12px' }}
+              />
               <Line
                 type="monotone"
                 dataKey="savings"
                 stroke="var(--color-savings)"
                 strokeWidth={2}
-                dot={{ r: 4 }}
+                dot={{ r: 3 }}
+                activeDot={{ r: 5 }}
               />
               <Line
                 type="monotone"
@@ -414,14 +444,16 @@ export function SolarSystemChart({ result, monthlyConsumption }: ChartProps) {
                 stroke="var(--color-cost)"
                 strokeWidth={2}
                 strokeDasharray="5 5"
-                dot={{ r: 4 }}
+                dot={{ r: 3 }}
+                activeDot={{ r: 5 }}
               />
               <Line
                 type="monotone"
                 dataKey="net"
                 stroke="var(--color-net)"
                 strokeWidth={2}
-                dot={{ r: 4 }}
+                dot={{ r: 3 }}
+                activeDot={{ r: 5 }}
               />
             </LineChart>
           </ChartContainer>

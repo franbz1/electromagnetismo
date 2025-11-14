@@ -37,15 +37,15 @@ export function Controls({ config, onConfigChange }: ControlsProps) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Configuración del Sistema Solar</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-lg sm:text-xl">Configuración del Sistema Solar</CardTitle>
+          <CardDescription className="text-xs sm:text-sm">
             Ajusta los parámetros del sistema de paneles solares
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-4 sm:space-y-6">
           {/* Configuración del Panel */}
           <div className="space-y-4">
             <div className="space-y-2">
@@ -55,7 +55,7 @@ export function Controls({ config, onConfigChange }: ControlsProps) {
               </p>
             </div>
             
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="panelKw">
                   Potencia del Panel (kW)
@@ -103,7 +103,7 @@ export function Controls({ config, onConfigChange }: ControlsProps) {
               </p>
             </div>
             
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="monthlySavePerKwh">
                   Ahorro Mensual por kWh (COP)
@@ -151,7 +151,7 @@ export function Controls({ config, onConfigChange }: ControlsProps) {
               </p>
             </div>
             
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="hsp">
                   Hora Solar Pico (HSP)
@@ -173,10 +173,10 @@ export function Controls({ config, onConfigChange }: ControlsProps) {
           </div>
 
           {/* Botón de Reset */}
-          <div className="border-t pt-4">
+          <div className="border-t pt-3 sm:pt-4">
             <button
               onClick={handleReset}
-              className="w-full cursor-pointer rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="w-full cursor-pointer rounded-md border border-input bg-background px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               Restablecer Valores por Defecto
             </button>
