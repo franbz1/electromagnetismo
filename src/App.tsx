@@ -1,11 +1,7 @@
+import { SolarSimulator } from "./components/simulator"
+
 function App() {
-  return (
-    <div>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </div>
-  )
+  return <SolarSimulator />
 }
 
 export default App
