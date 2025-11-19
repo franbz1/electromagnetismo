@@ -25,10 +25,19 @@ export function Controls({ config, onConfigChange }: ControlsProps) {
   }, [config]);
 
   const handleChange = (field: keyof SolarSystemConfig, value: string) => {
-    const numValue = parseFloat(value) || 0;
-    const newConfig = { ...localConfig, [field]: numValue };
-    setLocalConfig(newConfig);
-    onConfigChange(newConfig);
+    // Permitir valores vacíos temporalmente sin actualizar la configuración
+    if (value === "" || value === null || value === undefined) {
+      setLocalConfig({ ...localConfig, [field]: 0 });
+      return;
+    }
+    
+    const numValue = parseFloat(value);
+    // Solo actualizar si el valor es un número válido
+    if (!isNaN(numValue) && numValue >= 0) {
+      const newConfig = { ...localConfig, [field]: numValue };
+      setLocalConfig(newConfig);
+      onConfigChange(newConfig);
+    }
   };
 
   const handleReset = () => {

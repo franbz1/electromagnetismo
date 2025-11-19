@@ -118,7 +118,12 @@ export function SolarSystemChart({ result, monthlyConsumption }: ChartProps) {
 
   // Datos para proyección de ahorro en años
   const projectionYears = Math.ceil(result.returnOnInvestment) + 3;
-  const projectionData = Array.from({ length: projectionYears }, (_, i) => {
+  // Validar que projectionYears sea un número finito y positivo
+  const validProjectionYears = Number.isFinite(projectionYears) && projectionYears > 0 
+    ? Math.min(projectionYears, 50) // Limitar a máximo 50 años
+    : 10; // Valor por defecto si hay error
+  
+  const projectionData = Array.from({ length: validProjectionYears }, (_, i) => {
     const year = i + 1;
     const cumulativeSavings = result.annualSavings * year;
     const netSavings = cumulativeSavings - result.totalCost;
